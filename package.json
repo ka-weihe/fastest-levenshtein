@@ -1,6 +1,6 @@
 {
   "name": "node-levenshtein",
-  "version": "1.0.0",
+  "version": "2.0.1",
   "description": "Fastest Levenshtein distance implementation.",
   "main": "./js/node-levenshtein.js",
   "repository": {
@@ -36,27 +36,10 @@
     "url": "https://github.com/ka-weihe/node-levenshtein/issues"
   },
   "homepage": "https://github.com/ka-weihe/node-levenshtein#README",
-  "dependencies": {
-  },
+  "dependencies": {},
   "engines": {
     "node": ">=8.6.0"
   },
   "devDependencies": {
-    "eslint": "^6.5.1",
-    "eslint-config-airbnb": "^18.0.1",
-    "eslint-plugin-node": "^10.0.0",
-    "benchmark": "^2.1.4",
-    "eslint-config-es": "^3.15.0",
-    "fast-levenshtein": "^2.0.6",
-    "js-levenshtein": "^1.1.6",
-    "leven": "^2.1.0",
-    "levenshtein-edit-distance": "^2.0.4",
-    "node-addon-api": "^1.7.1",
-    "node-gyp": "^3.8.0",
-    "prettier": "^1.18.2",
-    "shuffle-array": "^1.0.1",
-    "talisman": "^0.21.0",
-    "tar": ">=2.2.2",
-    "fstream": ">=1.0.12"
   }
 }
