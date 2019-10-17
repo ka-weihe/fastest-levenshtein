@@ -1,0 +1,54 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(Desktop)", "..\Users\Kasper\Desktop", "{969D91CE-9630-F722-2E51-1B6250CF6193}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(Kasper)", "..\Users\Kasper", "{C73BA199-C906-5B60-57F8-A38CCBCEAC2F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(Ny mappe (7))", "..\Users\Kasper\Desktop\Ny mappe (7)", "{550F4152-E641-9273-BA59-5F19F3084FDF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(Users)", "..\Users", "{83FD2216-DE8C-3729-D4EA-3618B14F3F2D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(node-addon-api)", "..\Users\Kasper\Desktop\Ny mappe (7)\node-levenshtein\node_modules\node-addon-api", "{8E2ABF7F-B14B-7A87-C775-D83E197E7648}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(node-levenshtein)", "..\Users\Kasper\Desktop\Ny mappe (7)\node-levenshtein", "{CD96B5B0-06B0-8F0E-343B-D798D8669C37}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(node_modules)", "..\Users\Kasper\Desktop\Ny mappe (7)\node-levenshtein\node_modules", "{B1656B20-D856-423B-EC6C-621BBB665279}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(src)", "..\Users\Kasper\Desktop\Ny mappe (7)\node-levenshtein\node_modules\node-addon-api\src", "{3E20D08A-CF80-CC0E-9B8B-46F8D273AD46}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "addon", "addon.vcxproj", "{AFDA21CA-C9B6-C430-B205-72CCBA090F3B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{62632242-D368-6774-B191-2400D3CCEC82} = {62632242-D368-6774-B191-2400D3CCEC82}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nothing", "..\node_modules\node-addon-api\src\nothing.vcxproj", "{62632242-D368-6774-B191-2400D3CCEC82}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{62632242-D368-6774-B191-2400D3CCEC82}.Debug|x64.ActiveCfg = Debug|x64
+		{62632242-D368-6774-B191-2400D3CCEC82}.Debug|x64.Build.0 = Debug|x64
+		{62632242-D368-6774-B191-2400D3CCEC82}.Release|x64.ActiveCfg = Release|x64
+		{62632242-D368-6774-B191-2400D3CCEC82}.Release|x64.Build.0 = Release|x64
+		{AFDA21CA-C9B6-C430-B205-72CCBA090F3B}.Debug|x64.ActiveCfg = Debug|x64
+		{AFDA21CA-C9B6-C430-B205-72CCBA090F3B}.Debug|x64.Build.0 = Debug|x64
+		{AFDA21CA-C9B6-C430-B205-72CCBA090F3B}.Release|x64.ActiveCfg = Release|x64
+		{AFDA21CA-C9B6-C430-B205-72CCBA090F3B}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{550F4152-E641-9273-BA59-5F19F3084FDF} = {969D91CE-9630-F722-2E51-1B6250CF6193}
+		{969D91CE-9630-F722-2E51-1B6250CF6193} = {C73BA199-C906-5B60-57F8-A38CCBCEAC2F}
+		{CD96B5B0-06B0-8F0E-343B-D798D8669C37} = {550F4152-E641-9273-BA59-5F19F3084FDF}
+		{C73BA199-C906-5B60-57F8-A38CCBCEAC2F} = {83FD2216-DE8C-3729-D4EA-3618B14F3F2D}
+		{3E20D08A-CF80-CC0E-9B8B-46F8D273AD46} = {8E2ABF7F-B14B-7A87-C775-D83E197E7648}
+		{B1656B20-D856-423B-EC6C-621BBB665279} = {CD96B5B0-06B0-8F0E-343B-D798D8669C37}
+		{8E2ABF7F-B14B-7A87-C775-D83E197E7648} = {B1656B20-D856-423B-EC6C-621BBB665279}
+		{62632242-D368-6774-B191-2400D3CCEC82} = {3E20D08A-CF80-CC0E-9B8B-46F8D273AD46}
+	EndGlobalSection
+EndGlobal

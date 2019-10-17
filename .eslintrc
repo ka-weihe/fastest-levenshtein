@@ -1,0 +1,17 @@
+{
+    "extends": [
+        "eslint:recommended", 
+        "airbnb",
+        "plugin:node/recommended"
+        // "plugin:unicorn/recommended"
+    ],
+    // "plugins": ["prettier"],
+    "rules": {
+        // "unicorn/prevent-abbreviations": "off",
+        // "prettier/prettier": ["error"],
+        "no-plusplus": "off",
+        "no-param-reassign": "off",
+        "no-multi-assign": "off",
+        "no-console": "off"
+    }
+  }

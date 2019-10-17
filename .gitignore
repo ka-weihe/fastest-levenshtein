@@ -1,0 +1,4 @@
+lib/
+node_modules/
+binding.gyp
+
