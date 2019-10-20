@@ -55,6 +55,6 @@
     "talisman": "^0.21.0"
   },
   "scripts": {
-    "test": "node .\\js\\tests.js"
+    "test": "node .\\js\\test.js"
   }
 }
