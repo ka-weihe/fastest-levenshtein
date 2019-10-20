@@ -41,6 +41,18 @@
     "node": ">=8.6.0"
   },
   "devDependencies": {
+    "benchmark": "^2.1.4",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "fast-levenshtein": "^2.0.6",
+    "js-levenshtein": "^1.1.6",
+    "leven": "^3.1.0",
+    "levenshtein-edit-distance": "^2.0.4",
+    "talisman": "^0.21.0"
   },
   "scripts": {
     "test": "node .\\js\\tests.js"

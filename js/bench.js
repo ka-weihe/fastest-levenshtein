@@ -40,7 +40,7 @@ if (!fs.existsSync('data.json')) {
     randomstringArr(512, arrSize),
     randomstringArr(1024, arrSize)];
 
-    fs.writeFileSync('data.json', JSON.stringify(data));
+  fs.writeFileSync('data.json', JSON.stringify(data));
 }
 
 const data = JSON.parse(fs.readFileSync('data.json'));
@@ -49,7 +49,7 @@ const data = JSON.parse(fs.readFileSync('data.json'));
 for (let i = 0; i < 9; i++) {
   const datapick = data[i];
 
-  if (process.argv[2] != 'no') {
+  if (process.argv[2] !== 'no') {
     suite.add(`${i} - js-levenshtein`, () => {
       let j = 0;
       while (j < arrSize) {
@@ -57,34 +57,34 @@ for (let i = 0; i < 9; i++) {
         j += 2;
       }
     })
-    .add(`${i} - leven`, () => {
-      let j = 0;
-      while (j < arrSize) {
-        leven(datapick[j], datapick[j + 1]);
-        j += 2;
-      }
-    })
-    .add(`${i} - fast-levenshtein`, () => {
-      let j = 0;
-      while (j < arrSize) {
-        fastLevenshtein(datapick[j], datapick[j + 1]);
-        j += 2;
-      }
-    })
-    .add(`${i} - talisman`, () => {
-      let j = 0;
-      while (j < arrSize) {
-        talisman(datapick[j], datapick[j + 1]);
-        j += 2;
-      }
-    })
-    .add(`${i} - levenshteinEditDistance`, () => {
-      let j = 0;
-      while (j < arrSize) {
-        levenshteinEditDistance(datapick[j], datapick[j + 1]);
-        j += 2;
-      }
-    })
+      .add(`${i} - leven`, () => {
+        let j = 0;
+        while (j < arrSize) {
+          leven(datapick[j], datapick[j + 1]);
+          j += 2;
+        }
+      })
+      .add(`${i} - fast-levenshtein`, () => {
+        let j = 0;
+        while (j < arrSize) {
+          fastLevenshtein(datapick[j], datapick[j + 1]);
+          j += 2;
+        }
+      })
+      .add(`${i} - talisman`, () => {
+        let j = 0;
+        while (j < arrSize) {
+          talisman(datapick[j], datapick[j + 1]);
+          j += 2;
+        }
+      })
+      .add(`${i} - levenshteinEditDistance`, () => {
+        let j = 0;
+        while (j < arrSize) {
+          levenshteinEditDistance(datapick[j], datapick[j + 1]);
+          j += 2;
+        }
+      });
   }
   suite.add(`${i} - node-levenshtein`, () => {
     let j = 0;
@@ -92,7 +92,7 @@ for (let i = 0; i < 9; i++) {
       nodeLevenshtein(datapick[j], datapick[j + 1]);
       j += 2;
     }
-  });  
+  });
 }
 
 const results = new Map();
