@@ -2,6 +2,8 @@ sudo: false
 
 language: node_js
 
+os: windows
+
 node_js:
   - node
 
