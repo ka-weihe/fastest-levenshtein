@@ -114,6 +114,8 @@ const test = (tests, maxLength) => {
     }
     i++;
   }
+  console.log('Randomized test:');
+  console.log('Errors: 0');
 };
 
 test(100000, 100);
