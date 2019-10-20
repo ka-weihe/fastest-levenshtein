@@ -20,7 +20,7 @@ console.log(levenshtein('lorem', 'ipsum'))
 ```
 
 ## Benchmark
-I generated 500 pairs of strings with length N. I measured the ops/sec each library achieves to process all the given pairs. Higher is better. This node-levenshtein is a lot faster in all cases. 
+I generated 500 pairs of strings with length N. I measured the ops/sec each library achieves to process all the given pairs. Higher is better. node-levenshtein is a lot faster in all cases. 
 
 | Test Target               | N=4   | N=8   | N=16 | N=32 | N=64 | N=128 | N=256 | N=512 | N=1024 |
 |---------------------------|-------|-------|------|------|------|-------|-------|-------|--------|
