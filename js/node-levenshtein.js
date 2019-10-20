@@ -23,9 +23,9 @@ module.exports = (a, b) => {
       cache[j] = a.charCodeAt(j);
     }
 
-    const bl = b.length;
     let d;
     let i = 0;
+    const bl = b.length;
     while (i < bl - 3) {
       let d0; let d1; let d2; let d3;
       const b0 = b.charCodeAt(d0 = i);

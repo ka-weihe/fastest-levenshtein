@@ -1,3 +1,4 @@
+const fs = require('fs');
 const leven = require('leven');
 const Benchmark = require('benchmark');
 const fastLevenshtein = require('fast-levenshtein').get;
@@ -5,8 +6,6 @@ const jslevenshtein = require('js-levenshtein');
 const talisman = require('talisman/metrics/distance/levenshtein');
 const levenshteinEditDistance = require('levenshtein-edit-distance');
 const nodeLevenshtein = require('./node-levenshtein');
-
-
 
 const suite = new Benchmark.Suite();
 
@@ -28,23 +27,30 @@ function randomstringArr(stringSize, arraySize) {
   return arr;
 }
 
-const arrSize = 1000; // pairs x 2
-const data = [
-  randomstringArr(4, arrSize),
-  randomstringArr(8, arrSize),
-  randomstringArr(16, arrSize),
-  randomstringArr(32, arrSize),
-  randomstringArr(64, arrSize),
-  randomstringArr(128, arrSize),
-  randomstringArr(256, arrSize),
-  randomstringArr(512, arrSize),
-  randomstringArr(1024, arrSize)];
+const arrSize = 1000;
+if (!fs.existsSync('data.json')) {
+  const data = [
+    randomstringArr(4, arrSize),
+    randomstringArr(8, arrSize),
+    randomstringArr(16, arrSize),
+    randomstringArr(32, arrSize),
+    randomstringArr(64, arrSize),
+    randomstringArr(128, arrSize),
+    randomstringArr(256, arrSize),
+    randomstringArr(512, arrSize),
+    randomstringArr(1024, arrSize)];
+
+    fs.writeFileSync('data.json', JSON.stringify(data));
+}
+
+const data = JSON.parse(fs.readFileSync('data.json'));
 
 // BENCHMARKS
 for (let i = 0; i < 9; i++) {
   const datapick = data[i];
-  suite
-    .add(`${i} - js-levenshtein`, () => {
+
+  if (process.argv[2] != 'no') {
+    suite.add(`${i} - js-levenshtein`, () => {
       let j = 0;
       while (j < arrSize) {
         jslevenshtein(datapick[j], datapick[j + 1]);
@@ -79,13 +85,14 @@ for (let i = 0; i < 9; i++) {
         j += 2;
       }
     })
-    .add(`${i} - node-levenshtein`, () => {
-      let j = 0;
-      while (j < arrSize) {
-        nodeLevenshtein(datapick[j], datapick[j + 1]);
-        j += 2;
-      }
-    });
+  }
+  suite.add(`${i} - node-levenshtein`, () => {
+    let j = 0;
+    while (j < arrSize) {
+      nodeLevenshtein(datapick[j], datapick[j + 1]);
+      j += 2;
+    }
+  });  
 }
 
 const results = new Map();
