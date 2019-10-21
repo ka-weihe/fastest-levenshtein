@@ -5,6 +5,4 @@ binding.gyp
 images/
 src/
 package-lock.json
-js/bench.js
-js/example.js
-js/tests.js
+js/

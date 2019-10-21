@@ -2,7 +2,7 @@
   "name": "node-levenshtein",
   "version": "2.0.3",
   "description": "Fastest Levenshtein distance implementation.",
-  "main": "./js/node-levenshtein.js",
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ka-weihe/node-levenshtein.git"
@@ -36,7 +36,9 @@
     "url": "https://github.com/ka-weihe/node-levenshtein/issues"
   },
   "homepage": "https://github.com/ka-weihe/node-levenshtein#README",
-  "dependencies": {},
+  "dependencies": {
+    "node-gyp-build": "^4.1.1"
+  },
   "engines": {
     "node": ">=8.6.0"
   },
@@ -52,9 +54,12 @@
     "js-levenshtein": "^1.1.6",
     "leven": "^3.1.0",
     "levenshtein-edit-distance": "^2.0.4",
+    "node-addon-api": "^1.7.1",
+    "node-gyp": "^6.0.0",
     "talisman": "^0.21.0"
   },
   "scripts": {
-    "test": "node test.js" 
+    "test": "node test.js",
+    "install": "node-gyp-build"
   }
 }

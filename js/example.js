@@ -1,3 +1,3 @@
-const levenshtein = require('./node-levenshtein');
+const levenshtein = require('../index.js');
 
 console.log(levenshtein('ævel', 'elit'));

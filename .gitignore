@@ -3,3 +3,4 @@ node_modules/
 binding.gyp
 js/data.json
 package-lock.json
+build/
