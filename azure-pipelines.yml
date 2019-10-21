@@ -1,0 +1,72 @@
+jobs:
+  - job: Linux
+    pool:
+      vmImage: "ubuntu-16.04"
+    steps:
+      - template: ci-steps.yml
+
+  - job: macOS
+    pool:
+      vmImage: "macOS-10.13"
+    steps:
+      - template: ci-steps.yml
+
+  - job: Windows
+    pool:
+      vmImage: "vs2017-win2016"
+    steps:
+      - template: ci-steps.yml
+
+  - job: Windows32
+    pool:
+      vmImage: "vs2017-win2016"
+    steps:
+      - template: ci-steps.yml
+        parameters:
+          arch: ia32
+
+  - job: LinuxARM
+    pool:
+      vmImage: "ubuntu-16.04"
+    steps:
+      - script: |
+          sudo apt-get update -qq
+          sudo apt-get install -y gcc-4.8-arm-linux-gnueabihf g++-4.8-arm-linux-gnueabihf
+          export CC=arm-linux-gnueabihf-gcc-4.8
+          export CXX=arm-linux-gnueabihf-g++-4.8
+          export STRIP=arm-linux-gnueabihf-strip
+        displayName: "Install cross compile dependencies"
+      - template: ci-steps.yml
+        parameters:
+          arch: arm
+
+  - job: LinuxARM64
+    pool:
+      vmImage: "ubuntu-16.04"
+    steps:
+      - script: |
+          sudo apt-get update -qq
+          sudo apt-get install -y gcc-4.8-aarch64-linux-gnu g++-4.8-aarch64-linux-gnu
+          export CC=aarch64-linux-gnu-gcc-4.8
+          export CXX=aarch64-linux-gnu-g++-4.8
+          export STRIP=aarch64-linux-gnu-strip
+        displayName: "Install cross compile dependencies"
+      - template: ci-steps.yml
+        parameters:
+          arch: arm64
+
+  - job: Publish
+    pool:
+      vmImage: "ubuntu-16.04"
+    steps:
+      - task: DownloadBuildArtifacts@0
+        inputs:
+          artifactName: prebuilds
+          downloadPath: "$(System.DefaultWorkingDirectory)"
+      - script: echo //registry.npmjs.org/:_authToken=$(secret_npm_token) > .npmrc
+      - script: npm publish
+    dependsOn:
+      - Windows
+      - Linux
+      - macOS
+    condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/v'))

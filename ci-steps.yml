@@ -1,0 +1,30 @@
+parameters:
+  arch: "x64"
+
+steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: "2.7"
+
+  - task: NodeTool@0
+    inputs:
+      versionSpec: "10.x"
+    displayName: "Install Node.js"
+
+  - script: npm install --arch=${{ parameters.arch }}
+    displayName: "npm install"
+
+    # Azure only supports Node x64 out of the box
+    # https://github.com/Microsoft/azure-pipelines-tasks/issues/6671
+  - ${{ if eq(parameters.arch, 'x64') }}:
+    - script: npm test
+      displayName: "npm test"
+
+  - script: npm run prebuild -- --arch=${{ parameters.arch }}
+    displayName: "npm prebuild"
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathtoPublish: "$(System.DefaultWorkingDirectory)/prebuilds"
+      artifactName: "prebuilds"
+    condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/v')
