@@ -10,6 +10,6 @@ os:
 arch: amd64
 
 node_js:
-  - node
+  - 12
 
 script: npm test
