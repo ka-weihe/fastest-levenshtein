@@ -1,10 +1,10 @@
 # node-levenshtein :rocket: 
-[![Build Status](https://travis-ci.org/ka-weihe/node-levenshtein.svg?branch=master)](https://travis-ci.org/ka-weihe/node-levenshtein)
 Fastest implementation of the [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance) algorithm - (up to 8x+ faster than closest competitor). This algorithm can be used to measure the similarity of two strings. The performance has been achieved by using a highly-optimized N-API module written in C++. Furthermore, this module has the fastest javascript implementation that runs for short strings (when N-API overhead is too big). 
 
 Note: if you need to take the edit distance of one string against many strings (maybe billions), I have created a GPU-implementation that will be atleast 1000x faster than this. Contact me, if you're interested.
 
 This package requires __node v8.6.0__ or higher.
+
 [![Build Status](https://travis-ci.org/ka-weihe/node-levenshtein.svg?branch=master)](https://travis-ci.org/ka-weihe/node-levenshtein)
 ## Installation
 ```
