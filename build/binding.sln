@@ -1,0 +1,54 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(Documents)", "..\Users\Kasper\Documents", "{E770DFBE-B9DC-98AD-5460-7F6909C0D4D0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(GitHub)", "..\Users\Kasper\Documents\GitHub", "{933519AC-EE43-DEA2-DDF3-BB0A2AD5FDE3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(Kasper)", "..\Users\Kasper", "{C73BA199-C906-5B60-57F8-A38CCBCEAC2F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(Users)", "..\Users", "{83FD2216-DE8C-3729-D4EA-3618B14F3F2D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(node-addon-api)", "..\Users\Kasper\Documents\GitHub\node-levenshtein\node_modules\node-addon-api", "{AABB77F4-28B7-5745-DD04-24596EE4451D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(node-levenshtein)", "..\Users\Kasper\Documents\GitHub\node-levenshtein", "{98ED830E-8887-B992-58D0-0539B21C1CBB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(node_modules)", "..\Users\Kasper\Documents\GitHub\node-levenshtein\node_modules", "{B28F997B-9DDB-C5BA-BABC-A5C543135035}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(src)", "..\Users\Kasper\Documents\GitHub\node-levenshtein\node_modules\node-addon-api\src", "{7C3604C4-16D2-9A7A-1244-A278681B7820}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "binding", "binding.vcxproj", "{F010DCB3-288E-9843-EF45-A40433466EB9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DD5804CF-6815-DF35-06FE-C73443404DF7} = {DD5804CF-6815-DF35-06FE-C73443404DF7}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nothing", "..\node_modules\node-addon-api\src\nothing.vcxproj", "{DD5804CF-6815-DF35-06FE-C73443404DF7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DD5804CF-6815-DF35-06FE-C73443404DF7}.Debug|x64.ActiveCfg = Debug|x64
+		{DD5804CF-6815-DF35-06FE-C73443404DF7}.Debug|x64.Build.0 = Debug|x64
+		{DD5804CF-6815-DF35-06FE-C73443404DF7}.Release|x64.ActiveCfg = Release|x64
+		{DD5804CF-6815-DF35-06FE-C73443404DF7}.Release|x64.Build.0 = Release|x64
+		{F010DCB3-288E-9843-EF45-A40433466EB9}.Debug|x64.ActiveCfg = Debug|x64
+		{F010DCB3-288E-9843-EF45-A40433466EB9}.Debug|x64.Build.0 = Debug|x64
+		{F010DCB3-288E-9843-EF45-A40433466EB9}.Release|x64.ActiveCfg = Release|x64
+		{F010DCB3-288E-9843-EF45-A40433466EB9}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{933519AC-EE43-DEA2-DDF3-BB0A2AD5FDE3} = {E770DFBE-B9DC-98AD-5460-7F6909C0D4D0}
+		{98ED830E-8887-B992-58D0-0539B21C1CBB} = {933519AC-EE43-DEA2-DDF3-BB0A2AD5FDE3}
+		{E770DFBE-B9DC-98AD-5460-7F6909C0D4D0} = {C73BA199-C906-5B60-57F8-A38CCBCEAC2F}
+		{C73BA199-C906-5B60-57F8-A38CCBCEAC2F} = {83FD2216-DE8C-3729-D4EA-3618B14F3F2D}
+		{7C3604C4-16D2-9A7A-1244-A278681B7820} = {AABB77F4-28B7-5745-DD04-24596EE4451D}
+		{B28F997B-9DDB-C5BA-BABC-A5C543135035} = {98ED830E-8887-B992-58D0-0539B21C1CBB}
+		{AABB77F4-28B7-5745-DD04-24596EE4451D} = {B28F997B-9DDB-C5BA-BABC-A5C543135035}
+		{DD5804CF-6815-DF35-06FE-C73443404DF7} = {7C3604C4-16D2-9A7A-1244-A278681B7820}
+	EndGlobalSection
+EndGlobal
