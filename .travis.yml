@@ -2,7 +2,11 @@ sudo: false
 
 language: node_js
 
-os: linux
+os:
+  - linux
+  - osx
+  - windows
+
 arch: amd64
 
 node_js:
