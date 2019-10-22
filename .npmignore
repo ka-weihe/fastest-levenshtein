@@ -1,6 +1,5 @@
 node_modules/
 .eslintrc
 images/
-src/
 package-lock.json
 js/
