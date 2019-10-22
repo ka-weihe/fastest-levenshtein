@@ -2,3 +2,4 @@ node_modules/
 js/data.json
 package-lock.json
 lib/
+prebuilds/
