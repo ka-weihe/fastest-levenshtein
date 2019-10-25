@@ -5,7 +5,7 @@ const fastLevenshtein = require('fast-levenshtein').get;
 const jslevenshtein = require('js-levenshtein');
 const talisman = require('talisman/metrics/distance/levenshtein');
 const levenshteinEditDistance = require('levenshtein-edit-distance');
-const nodeLevenshtein = require('./node-levenshtein');
+const nodeLevenshtein = require('../index.js');
 
 const suite = new Benchmark.Suite();
 

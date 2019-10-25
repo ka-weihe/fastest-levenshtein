@@ -73,8 +73,10 @@
     "v8_use_siphash": 1,
     "v8_use_snapshot": 1,
     "want_separate_host_toolset": 0,
-    "nodedir": "C:\\Users\\Kasper\\AppData\\Local\\node-gyp\\Cache\\12.12.0",
+    "nodedir": "C:\\Users\\Kasper\\AppData\\Local\\Temp\\prebuildify\\electron\\6.0.0",
     "standalone_static_library": 1,
-    "msbuild_path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\BuildTools\\MSBuild\\15.0\\Bin\\MSBuild.exe"
+    "msbuild_path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\BuildTools\\MSBuild\\15.0\\Bin\\MSBuild.exe",
+    "target": "6.0.0",
+    "runtime": "electron"
   }
 }
