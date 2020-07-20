@@ -41,8 +41,8 @@ const myers_x = (a, b) => {
   for (; j < vsize - 1; j++) {
     let mv = 0;
     let pv = -1;
-    let start = j * 32;
-    let vlen = Math.min(32, m - start);
+    const start = j * 32;
+    const vlen = Math.min(32, m - start);
     let k = n;
     while (k--) peq[a.charCodeAt(k)] = 0;
     for (k = start; k < start + vlen; k++) {
@@ -67,8 +67,8 @@ const myers_x = (a, b) => {
   }
   let mv = 0;
   let pv = -1;
-  let start = j * 32;
-  let vlen = Math.min(32, m - start);
+  const start = j * 32;
+  const vlen = Math.min(32, m - start);
   let k = n;
   while (k--) peq[a.charCodeAt(k)] = 0;
   for (k = start; k < start + vlen; k++) {
@@ -101,24 +101,22 @@ exports.compare = (a, b) => {
     b = a;
     a = tmp;
   }
-  if (a.length == 0) return b.length
+  if (a.length === 0) return b.length;
   if (a.length <= 32) {
-    return myers_32(a, b)
-  } else{
-    return myers_x(a, b)
+    return myers_32(a, b);
   }
-}
+  return myers_x(a, b);
+};
 
 exports.find = (str, arr) => {
-  let min_distance = Infinity
-  let min_index = 0
-
+  let min_distance = Infinity;
+  let min_index = 0;
   for (let i = 0; i < arr.length; i++) {
-    const distance = this.compare(str, arr[i])
+    const distance = this.compare(str, arr[i]);
     if (distance < min_distance) {
-      min_distance = distance
-      min_index = i
+      min_distance = distance;
+      min_index = i;
     }
   }
-  return arr[min_index]
-}
+  return arr[min_index];
+};
