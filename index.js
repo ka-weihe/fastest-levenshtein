@@ -99,7 +99,7 @@ const myers_x = (a, b) => {
   return score;
 };
 
-module.exports = (a, b) => {
+exports.compare = (a, b) => {
   if (a.length > b.length) {
     const tmp = b;
     b = a;
@@ -113,3 +113,16 @@ module.exports = (a, b) => {
   }
 }
 
+exports.compare_many = (str, arr) => {
+  let min_distance = Infinity
+  let min_index = 0
+
+  for (let i = 0; i < arr.length; i++) {
+    const distance = this.compare(str, arr[i])
+    if (distance < min_distance) {
+      min_distance = distance
+      min_index = i
+    }
+  }
+  return arr[min_index]
+}

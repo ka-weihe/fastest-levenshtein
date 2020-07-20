@@ -64,7 +64,7 @@ const test = (tests, maxLength) => {
   let errors = 0;
 
   while (i < words.length - 1) {
-    if (nodeLevenshtein(words[i], words[i + 1]) !== levenshtein(words[i], words[i + 1])) {
+    if (nodeLevenshtein.compare(words[i], words[i + 1]) !== levenshtein(words[i], words[i + 1])) {
       errors++;
     }
     i += 2;
@@ -83,7 +83,7 @@ const test = (tests, maxLength) => {
     const str1 = randomstring(lstr1);
     const str2 = randomstring(lstr2);
 
-    if (nodeLevenshtein(str1, str2) !== levenshtein(str1, str2)) {
+    if (nodeLevenshtein.compare(str1, str2) !== levenshtein(str1, str2)) {
       errors++;
       console.log('Randomized test:');
       console.log(`Error: ${str1} ${str2}`);
@@ -98,7 +98,7 @@ const test = (tests, maxLength) => {
       while (j < ps1.length) {
         let k = 0;
         while (k < ps2.length) {
-          if (nodeLevenshtein(ps1[j].join(''), ps2[k].join('')) !== levenshtein(ps1[j].join(''), ps2[k].join(''))) {
+          if (nodeLevenshtein.compare(ps1[j].join(''), ps2[k].join('')) !== levenshtein(ps1[j].join(''), ps2[k].join(''))) {
             const shrink = `${ps1[j].join('')} ${ps2[k].join('')}`;
             if (shrink.length < shrinked.length) {
               shrinked = shrink;

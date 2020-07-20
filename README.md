@@ -14,9 +14,11 @@ $ npm install node-levenshtein --save
 ```javascript
 const levenshtein = require('node-levenshtein')
 
-console.log(levenshtein('lorem', 'ipsum'))
+console.log(levenshtein.compare('fast', 'faster'))
 //=> 4
 
+console.log(levenshtein.compare_many('fast', ['slow', 'faster', 'fastest']))
+//=> 'faster'
 ```
 
 ## Benchmark

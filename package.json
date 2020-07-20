@@ -28,7 +28,6 @@
   ],
   "author": "Kasper U. Weihe",
   "license": "MIT",
-  "gypfile": true,
   "bugs": {
     "url": "https://github.com/ka-weihe/node-levenshtein/issues"
   },
