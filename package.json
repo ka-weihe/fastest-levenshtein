@@ -1,6 +1,6 @@
 {
   "name": "node-levenshtein",
-  "version": "2.0.14",
+  "version": "3.0.0",
   "description": "Fastest Levenshtein distance implementation in JS.",
   "main": "index.js",
   "repository": {
@@ -11,15 +11,12 @@
     "levenshtein",
     "distance",
     "fast",
-    "native",
-    "n-api",
     "fastest",
     "edit",
     "string",
     "similarity",
     "algorithm",
     "match",
-    "addon",
     "comparison",
     "fuzzy",
     "search",
