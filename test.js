@@ -118,4 +118,4 @@ const test = (tests, maxLength) => {
   console.log('Errors: 0');
 };
 
-test(100000, 10000);
+test(100000, 100);
