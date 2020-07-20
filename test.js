@@ -45,6 +45,7 @@ function makeid(length) {
 }
 
 test('test compare', () => {
+  let errors = 0
   for (var i = 0; i < 1000; i++) {
     const rnd_num1 = Math.random() * 1000 | 0
     const rnd_num2 = Math.random() * 1000 | 0
