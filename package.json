@@ -1,6 +1,6 @@
 {
   "name": "node-levenshtein",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Fastest Levenshtein distance implementation in JS.",
   "main": "index.js",
   "repository": {
