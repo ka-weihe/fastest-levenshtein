@@ -14,9 +14,11 @@ $ npm install node-levenshtein --save
 ```javascript
 const levenshtein = require('node-levenshtein')
 
+// Print edit-distance between 'fast' and 'faster' 
 console.log(levenshtein.compare('fast', 'faster'))
-//=> 4
+//=> 2
 
+// Print string from array with lowest edit-distance to 'fast'
 console.log(levenshtein.find('fast', ['slow', 'faster', 'fastest']))
 //=> 'faster'
 ```
