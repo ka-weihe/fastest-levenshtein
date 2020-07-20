@@ -1,55 +1,115 @@
-const addon = require('node-gyp-build')(__dirname);
-const NAPI_MINIMUM_SIZE = 34;
-const row = new Uint8Array(NAPI_MINIMUM_SIZE);
-const cache = new Uint16Array(NAPI_MINIMUM_SIZE);
+const peq = new Uint32Array(65535);
+const myers_32 = (a, b) => {
+  const n = a.length;
+  const m = b.length;
+  const lst = 1 << (n - 1);
+  let pv = -1;
+  let mv = 0;
+  let sc = n;
+  let i = m;
+  while (i--) peq[b.charCodeAt(i)] = 0;
+  i = n;
+  while (i--) peq[a.charCodeAt(i)] |= 1 << i;
+  for (i = 0; i < m; i++) {
+    let eq = peq[b.charCodeAt(i)];
+    const xv = eq | mv;
+    eq |= ((eq & pv) + pv) ^ pv;
+    mv |= ~(eq | pv);
+    pv &= eq;
+    if (mv & lst) sc++;
+    if (pv & lst) sc--;
+    mv = (mv << 1) | 1;
+    pv = (pv << 1) | ~(xv | mv);
+    mv &= xv;
+  }
+  return sc;
+};
+
+const myers_x = (a, b) => {
+  const n = a.length;
+  const m = b.length;
+  const mhc = [];
+  const phc = [];
+  const hsize = Math.ceil(n / 32);
+  const vsize = Math.ceil(m / 32);
+  let score = m;
+  for (let i = 0; i < hsize; i++) {
+    phc[i] = -1;
+    mhc[i] = 0;
+  }
+  let j = 0;
+  for (; j < vsize - 1; j++) {
+    let mv = 0;
+    let pv = -1;
+    let start = j * 32;
+    let vlen = Math.min(32, m - start);
+    let k = n;
+    while (k--) peq[a.charCodeAt(k)] = 0;
+    for (k = start; k < start + vlen; k++) {
+      peq[b.charCodeAt(k)] |= 1 << k;
+    }
+    score = m;
+    for (let i = 0; i < n; i++) {
+      const eq = peq[a.charCodeAt(i)];
+      const pb = (phc[(i / 32) | 0] >>> i % 32) & 1;
+      const mb = (mhc[(i / 32) | 0] >>> i % 32) & 1;
+      const xv = eq | mv;
+      const xh = ((((eq | mb) & pv) + pv) ^ pv) | eq | mb;
+      let ph = mv | ~(xh | pv);
+      let mh = pv & xh;
+      if ((ph >>> 31) ^ pb) phc[(i / 32) | 0] ^= 1 << i % 32;
+      if ((mh >>> 31) ^ mb) mhc[(i / 32) | 0] ^= 1 << i % 32;
+      ph = (ph << 1) | pb;
+      mh = (mh << 1) | mb;
+      pv = mh | ~(xv | ph);
+      mv = ph & xv;
+    }
+  }
+  if (j < vsize) {
+    let mv = 0;
+    let pv = -1;
+    let start = j * 32;
+    let vlen = Math.min(32, m - start);
+    let k = n;
+    while (k--) peq[a.charCodeAt(k)] = 0;
+    for (k = start; k < start + vlen; k++) {
+      peq[b.charCodeAt(k)] |= 1 << k;
+    }
+    score = m;
+    for (let i = 0; i < n; i++) {
+      const eq = peq[a.charCodeAt(i)];
+      const pb = (phc[(i / 32) | 0] >>> i % 32) & 1;
+      const mb = (mhc[(i / 32) | 0] >>> i % 32) & 1;
+      const xv = eq | mv;
+      const xh = ((((eq | mb) & pv) + pv) ^ pv) | eq | mb;
+      let ph = mv | ~(xh | pv);
+      let mh = pv & xh;
+      if (j === vsize - 1) {
+        score += (ph >>> ((m % 32) - 1)) & 1;
+        score -= (mh >>> ((m % 32) - 1)) & 1;
+      }
+      if ((ph >>> 31) ^ pb) phc[(i / 32) | 0] ^= 1 << i % 32;
+      if ((mh >>> 31) ^ mb) mhc[(i / 32) | 0] ^= 1 << i % 32;
+      ph = (ph << 1) | pb;
+      mh = (mh << 1) | mb;
+      pv = mh | ~(xv | ph);
+      mv = ph & xv;
+    }
+  }
+  return score;
+};
 
 module.exports = (a, b) => {
-  if (a.length + b.length < NAPI_MINIMUM_SIZE) {
-    if (a === b) return 0;
-
-    if (a.length > b.length) {
-      const tmp = b;
-      b = a;
-      a = tmp;
-    }
-
-    const al = a.length;
-    if (!al) return b.length;
-
-    let j = al;
-    while (j--) {
-      row[j] = j + 1;
-      cache[j] = a.charCodeAt(j);
-    }
-
-    let d;
-    let i = 0;
-    const bl = b.length;
-    while (i < bl - 3) {
-      let d0; let d1; let d2; let d3;
-      const b0 = b.charCodeAt(d0 = i);
-      const b1 = b.charCodeAt(d1 = i + 1);
-      const b2 = b.charCodeAt(d2 = i + 2);
-      const b3 = b.charCodeAt(d3 = i + 3);
-      d = (i += 4);
-      for (j = 0; j < al; j++) {
-        const ac = cache[j];
-        row[j] = d = Math.min(d3 - (ac === b3), d,
-          d3 = Math.min(d2 - (ac === b2), d3,
-            d2 = Math.min(d1 - (ac === b1), d2,
-              d1 = Math.min(d0 - (ac === b0), d1,
-                d0 = row[j]) + 1) + 1) + 1) + 1;
-      }
-    }
-    while (i < bl) {
-      let d0;
-      const b0 = b.charCodeAt(d0 = i++);
-      d = i;
-      for (j = 0; j < al; j++) {
-        row[j] = d = Math.min(d0 - (cache[j] === b0), (d0 = row[j]), d) + 1;
-      }
-    }
-    return d;
+  if (a.length > b.length) {
+    const tmp = b;
+    b = a;
+    a = tmp;
   }
-  return addon.levenshtein(a, b);
-};
+  if (a.length == 0) return b.length
+  if (a.length <= 32) {
+    return myers_32(a, b)
+  } else{
+    return myers_x(a, b)
+  }
+}
+

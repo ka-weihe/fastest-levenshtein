@@ -52,7 +52,7 @@ function randomstring(n) {
   let i = 0;
   const arr = [];
   while (i < n) {
-    arr.push(Math.floor(Math.random() * 65536));
+    arr.push(Math.floor(Math.random() * 1000));
     i++;
   }
   return String.fromCharCode(...arr);
@@ -118,4 +118,4 @@ const test = (tests, maxLength) => {
   console.log('Errors: 0');
 };
 
-test(100000, 100);
+test(100000, 10000);
