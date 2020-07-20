@@ -113,7 +113,7 @@ exports.compare = (a, b) => {
   }
 }
 
-exports.compare_many = (str, arr) => {
+exports.find = (str, arr) => {
   let min_distance = Infinity
   let min_index = 0
 

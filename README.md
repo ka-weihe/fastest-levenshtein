@@ -17,7 +17,7 @@ const levenshtein = require('node-levenshtein')
 console.log(levenshtein.compare('fast', 'faster'))
 //=> 4
 
-console.log(levenshtein.compare_many('fast', ['slow', 'faster', 'fastest']))
+console.log(levenshtein.find('fast', ['slow', 'faster', 'fastest']))
 //=> 'faster'
 ```
 
