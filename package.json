@@ -33,6 +33,11 @@
   },
   "homepage": "https://github.com/ka-weihe/node-levenshtein#README",
   "scripts": {
-    "test": "node test.js"
+    "test": "jest",
+    "coveralls": "jest --coverage && cat ./tests/coverage/lcov.info | coveralls"
+  },
+  "devDependencies": {
+    "coveralls": "^3.1.0",
+    "jest": "^26.1.0"
   }
 }
