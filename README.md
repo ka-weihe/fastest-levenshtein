@@ -1,5 +1,5 @@
 # node-levenshtein :rocket: 
-Fastest javascript implementation of the [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance) algorithm - (up to 10x+ faster than closest competitor). This algorithm can be used to measure the similarity of two strings. The performance has been achieved by using Myers' bit-parallel algorithm. This package has no dependencies and only 849 bytes of pure JavaScript.
+Fastest JavaScript implementation of the [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance) algorithm - (up to 10x+ faster than closest competitor). This algorithm can be used to measure the similarity of two strings. The performance has been achieved by using Myers' bit-parallel algorithm. This package has no dependencies and only 849 bytes of pure JavaScript.
 
 Note: if you need to take the edit distance of one string against many strings (maybe billions), I have created a GPU-implementation that will be atleast 1000x faster than this. Contact me, if you're interested.
 
