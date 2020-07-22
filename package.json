@@ -1,6 +1,6 @@
 {
   "name": "fastest-levenshtein",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Fastest Levenshtein distance implementation in JS.",
   "main": "index.js",
   "repository": {
