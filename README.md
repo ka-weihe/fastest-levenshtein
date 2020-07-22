@@ -6,7 +6,7 @@ Note: if you need to take the edit distance of one string against many strings (
 [![Build Status](https://travis-ci.org/ka-weihe/node-levenshtein.svg?branch=master)](https://travis-ci.org/ka-weihe/node-levenshtein)
 [![Coverage Status](https://coveralls.io/repos/github/ka-weihe/node-levenshtein/badge.svg?branch=master)](https://coveralls.io/github/ka-weihe/node-levenshtein?branch=master)
 ```
-$ npm install fastest-levenshtein --save
+$ npm i fastest-levenshtein
 ```
 
 ## Usage

@@ -4,3 +4,5 @@ images/
 package-lock.json
 js/
 coverage/
+data.json
+bench.js
