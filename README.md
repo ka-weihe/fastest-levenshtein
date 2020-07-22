@@ -35,7 +35,7 @@ I generated 500 pairs of strings with length N. I measured the ops/sec each libr
 | levenshtein-edit-distance | 22968 | 7445  | 1493  | 409  | 109   | 28.07 | 7.095 | 1.789 | 0.445  |
 
 ### Relative Performance
-This image shows the relative performance between `fastest-levenshtein` and `js-levenshtein` (the 2nd fastest). `fastest-levenshtein` is always a lot faster.
+This image shows the relative performance between `fastest-levenshtein` and `js-levenshtein` (the 2nd fastest). `fastest-levenshtein` is always a lot faster. x-axis shows "times faster".
 
 ![Benchmark](/images/relaperf.png)
 
