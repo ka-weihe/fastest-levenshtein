@@ -1,11 +1,11 @@
 {
-  "name": "node-levenshtein",
-  "version": "3.0.5",
+  "name": "fastest-levenshtein",
+  "version": "3.0.7",
   "description": "Fastest Levenshtein distance implementation in JS.",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ka-weihe/node-levenshtein.git"
+    "url": "git+https://github.com/ka-weihe/fastest-levenshtein.git"
   },
   "keywords": [
     "levenshtein",
@@ -29,15 +29,16 @@
   "author": "Kasper U. Weihe",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ka-weihe/node-levenshtein/issues"
+    "url": "https://github.com/ka-weihe/fastest-levenshtein/issues"
   },
-  "homepage": "https://github.com/ka-weihe/node-levenshtein#README",
+  "homepage": "https://github.com/ka-weihe/fastest-levenshtein#README",
   "scripts": {
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:coveralls": "jest --coverage --coverageReporters=text-lcov | coveralls"
   },
   "devDependencies": {
+    "benchmark": "^2.1.4",
     "coveralls": "^3.1.0",
     "eslint": "^7.5.0",
     "eslint-config-airbnb": "^18.2.0",
@@ -50,7 +51,15 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.3",
     "eslint-plugin-react-hooks": "^4.0.0",
+    "fast-levenshtein": "^2.0.6",
     "jest": "^26.1.0",
-    "prettier": "^2.0.5"
+    "js-levenshtein": "^1.1.6",
+    "leven": "^3.1.0",
+    "natural": "^2.1.5",
+    "prettier": "^2.0.5",
+    "talisman": "^1.1.2"
+  },
+  "dependencies": {
+    "levenshtein-edit-distance": "^2.0.5"
   }
 }

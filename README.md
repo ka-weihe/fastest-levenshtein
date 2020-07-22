@@ -1,42 +1,41 @@
-# node-levenshtein :rocket: 
-Fastest JavaScript implementation of the [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance) algorithm - (up to 10x+ faster than closest competitor). This algorithm can be used to measure the similarity of two strings. The performance has been achieved by using Myers' bit-parallel algorithm. 
+# fastest-levenshtein :rocket: 
+Fastest JavaScript implementation of the [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance) algorithm - (up to 10x+ faster than closest competitor). This algorithm can be used to measure the similarity of two strings.
 
 Note: if you need to take the edit distance of one string against many strings (maybe billions), I have created a GPU-implementation that will be atleast 1000x faster than this. Contact me, if you're interested.
 
 [![Build Status](https://travis-ci.org/ka-weihe/node-levenshtein.svg?branch=master)](https://travis-ci.org/ka-weihe/node-levenshtein)
 [![Coverage Status](https://coveralls.io/repos/github/ka-weihe/node-levenshtein/badge.svg?branch=master)](https://coveralls.io/github/ka-weihe/node-levenshtein?branch=master)
 ```
-$ npm install node-levenshtein --save
+$ npm install fastest-levenshtein --save
 ```
 
 ## Usage
 
 ```javascript
-const levenshtein = require('node-levenshtein')
+const {distance, closest} = require('fastest-levenshtein')
 
-// Print edit-distance between 'fast' and 'faster' 
-console.log(levenshtein.compare('fast', 'faster'))
+// Print levenshtein-distance between 'fast' and 'faster' 
+console.log(distance('fast', 'faster'))
 //=> 2
 
 // Print string from array with lowest edit-distance to 'fast'
-console.log(levenshtein.find('fast', ['slow', 'faster', 'fastest']))
+console.log(closest('fast', ['slow', 'faster', 'fastest']))
 //=> 'faster'
 ```
 
 ## Benchmark
-I generated 500 pairs of strings with length N. I measured the ops/sec each library achieves to process all the given pairs. Higher is better. node-levenshtein is a lot faster in all cases. 
+I generated 500 pairs of strings with length N. I measured the ops/sec each library achieves to process all the given pairs. Higher is better. fastest-levenshtein is a lot faster in all cases. 
 
-| Test Target               | N=4   | N=8   | N=16 | N=32 | N=64 | N=128 | N=256 | N=512 | N=1024 |
-|---------------------------|-------|-------|------|------|------|-------|-------|-------|--------|
-| node-levenshtein          | 42423 | 17237 | 5577 | 3428 | 2013 | 596.1 | 182.6 | 49.88 | 12.99  |
-| js-levenshtein            | 24012 | 12684 | 4100 | 1311 | 371  | 97.25 | 25.40 | 6.404 | 1.632  |
-| leven                     | 30291 | 11002 | 3378 | 907  | 227  | 59.94 | 15.59 | 3.958 | 0.998  |
-| talisman                  | 29859 | 9782  | 3319 | 926  | 234  | 63.76 | 16.12 | 3.989 | 0.986  |
-| fast-levenshtein          | 23517 | 7686  | 2291 | 576  | 154  | 40.13 | 10.16 | 2.558 | 0.643  |
-| levenshtein-edit-distance | 31423 | 10783 | 3209 | 851  | 214  | 56.13 | 14.24 | 3.694 | 0.931  |
+| Test Target               | N=4   | N=8   | N=16  | N=32 | N=64  | N=128 | N=256 | N=512 | N=1024 |
+|---------------------------|-------|-------|-------|------|-------|-------|-------|-------|--------|
+| fastest-levenshtein       | 44423 | 23702 | 10764 | 4595 | 1049  | 291.5 | 86.64 | 22.24 | 5.473  |
+| js-levenshtein            | 21261 | 10030 | 2939  | 824  | 223   | 57.62 | 14.77 | 3.717 | 0.934  |
+| leven                     | 19688 | 6884  | 1606  | 436  | 117   | 30.34 | 7.604 | 1.929 | 0.478  |
+| fast-levenshtein          | 18577 | 6112  | 1265  | 345  | 89.41 | 22.70 | 5.676 | 1.428 | 0.348  |
+| levenshtein-edit-distance | 22968 | 7445  | 1493  | 409  | 109   | 28.07 | 7.095 | 1.789 | 0.445  |
 
 ### Relative Performance
-This image shows the relative performance between node-levenshtein and js-levenshtein (the 2nd fastest). As you can see, node-levenshtein is a lot faster for small strings, but especially for long strings (8x faster when N = 1024).
+This image shows the relative performance between fastest-levenshtein and js-levenshtein (the 2nd fastest). As you can see, fastest-levenshtein is always a lot faster.
 
 ![Benchmark](/images/relaperf.png)
 

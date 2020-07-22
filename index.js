@@ -25,7 +25,7 @@ const myers_32 = (a, b) => {
   return sc;
 };
 
-const myers_x = (a, b) => {
+const myers_x = (b, a) => {
   const n = a.length;
   const m = b.length;
   const mhc = [];
@@ -95,24 +95,24 @@ const myers_x = (a, b) => {
   return score;
 };
 
-exports.compare = (a, b) => {
-  if (a.length > b.length) {
+exports.distance = (a, b) => {
+  if (a.length < b.length) {
     const tmp = b;
     b = a;
     a = tmp;
   }
-  if (a.length === 0) return b.length;
+  if (b.length === 0) return a.length;
   if (a.length <= 32) {
     return myers_32(a, b);
   }
   return myers_x(a, b);
 };
 
-exports.find = (str, arr) => {
+exports.closest = (str, arr) => {
   let min_distance = Infinity;
   let min_index = 0;
   for (let i = 0; i < arr.length; i++) {
-    const distance = this.compare(str, arr[i]);
+    const distance = this.distance(str, arr[i]);
     if (distance < min_distance) {
       min_distance = distance;
       min_index = i;
