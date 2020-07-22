@@ -1,6 +1,6 @@
 {
   "name": "fastest-levenshtein",
-  "version": "1.0.3",
+  "version": "1.0.8",
   "description": "Fastest Levenshtein distance implementation in JS.",
   "main": "index.js",
   "repository": {
@@ -57,9 +57,7 @@
     "leven": "^3.1.0",
     "natural": "^2.1.5",
     "prettier": "^2.0.5",
-    "talisman": "^1.1.2"
-  },
-  "dependencies": {
+    "talisman": "^1.1.2",
     "levenshtein-edit-distance": "^2.0.5"
   }
 }

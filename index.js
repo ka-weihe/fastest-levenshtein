@@ -1,4 +1,4 @@
-const peq = new Uint32Array(65535);
+const peq = new Uint32Array(0x10000);
 const myers_32 = (a, b) => {
   const n = a.length;
   const m = b.length;
