@@ -10,7 +10,10 @@ os:
 arch: amd64
 
 node_js:
-  - node
+  - 6.0
+  - 8.0
+  - 10.0
+  - stable
 
 script:
   - npm test
