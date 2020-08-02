@@ -51,77 +51,77 @@ const myers_x = (a, b) => {
     let mv = 0;
     let pv = -1;
     const start = j * 32;
-    const vlen = Math.min(32, m) + start;
-    for (let k = start; k < vlen; k++) {
+    const end = Math.min(32, m) + start;
+    for (let k = start; k < end; k++) {
       peq[b.charCodeAt(k)] |= 1 << k;
     }
     score = m;
     for (let i = 0; i < n; i++) {
       const eq = peq[a.charCodeAt(i)];
-      const pb = (phc[(i / 32) | 0] >>> i % 32) & 1;
-      const mb = (mhc[(i / 32) | 0] >>> i % 32) & 1;
+      const pb = (phc[(i / 32) | 0] >>> i) & 1;
+      const mb = (mhc[(i / 32) | 0] >>> i) & 1;
       const xv = eq | mv;
       const xh = ((((eq | mb) & pv) + pv) ^ pv) | eq | mb;
       let ph = mv | ~(xh | pv);
       let mh = pv & xh;
       if ((ph >>> 31) ^ pb) {
-        phc[(i / 32) | 0] ^= 1 << i % 32;
+        phc[(i / 32) | 0] ^= 1 << i;
       }
       if ((mh >>> 31) ^ mb) {
-        mhc[(i / 32) | 0] ^= 1 << i % 32;
+        mhc[(i / 32) | 0] ^= 1 << i;
       }
       ph = (ph << 1) | pb;
       mh = (mh << 1) | mb;
       pv = mh | ~(xv | ph);
       mv = ph & xv;
     }
-    for (let k = start; k < vlen; k++) {
+    for (let k = start; k < end; k++) {
       peq[b.charCodeAt(k)] = 0;
     }
   }
   let mv = 0;
   let pv = -1;
   const start = j * 32;
-  const vlen = Math.min(32, m - start) + start;
-  for (let k = start; k < vlen; k++) {
+  const end = Math.min(32, m - start) + start;
+  for (let k = start; k < end; k++) {
     peq[b.charCodeAt(k)] |= 1 << k;
   }
   score = m;
   for (let i = 0; i < n; i++) {
     const eq = peq[a.charCodeAt(i)];
-    const pb = (phc[(i / 32) | 0] >>> i % 32) & 1;
-    const mb = (mhc[(i / 32) | 0] >>> i % 32) & 1;
+    const pb = (phc[(i / 32) | 0] >>> i) & 1;
+    const mb = (mhc[(i / 32) | 0] >>> i) & 1;
     const xv = eq | mv;
     const xh = ((((eq | mb) & pv) + pv) ^ pv) | eq | mb;
     let ph = mv | ~(xh | pv);
     let mh = pv & xh;
-    score += (ph >>> ((m % 32) - 1)) & 1;
-    score -= (mh >>> ((m % 32) - 1)) & 1;
+    score += (ph >>> (m - 1)) & 1;
+    score -= (mh >>> (m - 1)) & 1;
     if ((ph >>> 31) ^ pb) {
-      phc[(i / 32) | 0] ^= 1 << i % 32;
+      phc[(i / 32) | 0] ^= 1 << i;
     }
     if ((mh >>> 31) ^ mb) {
-      mhc[(i / 32) | 0] ^= 1 << i % 32;
+      mhc[(i / 32) | 0] ^= 1 << i;
     }
     ph = (ph << 1) | pb;
     mh = (mh << 1) | mb;
     pv = mh | ~(xv | ph);
     mv = ph & xv;
   }
-  for (let k = start; k < vlen; k++) {
+  for (let k = start; k < end; k++) {
     peq[b.charCodeAt(k)] = 0;
   }
   return score;
 };
 
 exports.distance = (a, b) => {
-  if (a.length < b.length) {
+  if (a.length > b.length) {
     const tmp = b;
     b = a;
     a = tmp;
   }
-  if (b.length === 0) {
-    return a.length;
+  if (a.length === 0) {
+    return b.length;
   }
   if (a.length <= 32) {
     return myers_32(a, b);
