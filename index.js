@@ -133,9 +133,9 @@ const closest = (str, arr) => {
   let min_distance = Infinity;
   let min_index = 0;
   for (let i = 0; i < arr.length; i++) {
-    const receivedDistance = distance(str, arr[i]);
-    if (receivedDistance < min_distance) {
-      min_distance = receivedDistance;
+    const dist = distance(str, arr[i]);
+    if (dist < min_distance) {
+      min_distance = dist;
       min_index = i;
     }
   }
