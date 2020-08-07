@@ -114,7 +114,7 @@ const myers_x = (a, b) => {
   return score;
 };
 
-exports.distance = (a, b) => {
+const distance = (a, b) => {
   if (a.length > b.length) {
     const tmp = b;
     b = a;
@@ -129,15 +129,19 @@ exports.distance = (a, b) => {
   return myers_x(a, b);
 };
 
-exports.closest = (str, arr) => {
+const closest = (str, arr) => {
   let min_distance = Infinity;
   let min_index = 0;
   for (let i = 0; i < arr.length; i++) {
-    const distance = this.distance(str, arr[i]);
-    if (distance < min_distance) {
-      min_distance = distance;
+    const receivedDistance = distance(str, arr[i]);
+    if (receivedDistance < min_distance) {
+      min_distance = receivedDistance;
       min_index = i;
     }
   }
   return arr[min_index];
 };
+
+module.exports = {
+  closest, distance
+}
