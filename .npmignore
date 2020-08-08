@@ -6,3 +6,4 @@ js/
 coverage/
 data.json
 bench.js
+mod.ts
