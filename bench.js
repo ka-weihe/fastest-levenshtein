@@ -8,7 +8,7 @@ const Benchmark = require("benchmark");
 const fastLevenshtein = require("fast-levenshtein").get;
 const jslevenshtein = require("js-levenshtein");
 const levenshteinEditDistance = require("levenshtein-edit-distance");
-const { distance } = require("./index.js");
+const { distance } = require("./dist");
 
 const suite = new Benchmark.Suite();
 

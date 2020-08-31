@@ -2,3 +2,5 @@ node_modules/
 js/data.json
 package-lock.json
 data.json
+dist
+coverage
