@@ -1,4 +1,4 @@
-const {distance, closest} = require("./index.js");
+const { distance, closest } = require("./dist");
 
 const levenshtein = (a, b) => {
   if (a.length === 0) return b.length;

@@ -7,3 +7,4 @@ coverage/
 data.json
 bench.js
 mod.ts
+tsconfig.json
