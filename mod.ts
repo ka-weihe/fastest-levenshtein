@@ -40,7 +40,6 @@ const myers_x = (b: string, a: string) => {
   const phc = [];
   const hsize = Math.ceil(n / 32);
   const vsize = Math.ceil(m / 32);
-  let score = m;
   for (let i = 0; i < hsize; i++) {
     phc[i] = -1;
     mhc[i] = 0;
@@ -54,7 +53,6 @@ const myers_x = (b: string, a: string) => {
     for (let k = start; k < vlen; k++) {
       peq[b.charCodeAt(k)] |= 1 << k;
     }
-    score = m;
     for (let i = 0; i < n; i++) {
       const eq = peq[a.charCodeAt(i)];
       const pb = (phc[(i / 32) | 0] >>> i % 32) & 1;
@@ -85,7 +83,7 @@ const myers_x = (b: string, a: string) => {
   for (let k = start; k < vlen; k++) {
     peq[b.charCodeAt(k)] |= 1 << k;
   }
-  score = m;
+  let score = m;
   for (let i = 0; i < n; i++) {
     const eq = peq[a.charCodeAt(i)];
     const pb = (phc[(i / 32) | 0] >>> i % 32) & 1;
