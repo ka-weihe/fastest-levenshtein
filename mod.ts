@@ -111,8 +111,7 @@ const myers_x = (b: string, a: string) => {
   return score;
 };
 
-
-export function distance(a: string, b: string): number {
+const distance = (a: string, b: string): number => {
   if (a.length < b.length) {
     const tmp = b;
     b = a;
@@ -125,9 +124,9 @@ export function distance(a: string, b: string): number {
     return myers_32(a, b);
   }
   return myers_x(a, b);
-}
+};
 
-export function closest(str: string, arr: string[]): string {
+const closest = (str: string, arr: string[]): string => {
   let min_distance = Infinity;
   let min_index = 0;
   for (let i = 0; i < arr.length; i++) {
@@ -138,4 +137,6 @@ export function closest(str: string, arr: string[]): string {
     }
   }
   return arr[min_index];
-}
+};
+
+export { closest, distance };

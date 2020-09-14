@@ -1,8 +1,12 @@
-const { distance, closest } = require("./dist");
+import { closest, distance } from "./dist";
 
 const levenshtein = (a, b) => {
-  if (a.length === 0) return b.length;
-  if (b.length === 0) return a.length;
+  if (a.length === 0) {
+    return b.length;
+  }
+  if (b.length === 0) {
+    return a.length;
+  }
 
   if (a.length > b.length) {
     const tmp = a;
@@ -18,7 +22,7 @@ const levenshtein = (a, b) => {
   for (let i = 1; i <= b.length; i++) {
     let prev = i;
     for (let j = 1; j <= a.length; j++) {
-      let val;
+      let val = 0;
       if (b.charAt(i - 1) === a.charAt(j - 1)) {
         val = row[j - 1];
       } else {
@@ -33,7 +37,7 @@ const levenshtein = (a, b) => {
   return row[a.length];
 };
 
-function makeid(length) {
+const makeid = (length) => {
   let result = "";
   const characters =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -42,10 +46,9 @@ function makeid(length) {
     result += characters.charAt(Math.floor(Math.random() * charactersLength));
   }
   return result;
-}
+};
 
 test("test compare", () => {
-  const errors = 0;
   for (let i = 0; i < 1000; i++) {
     const rnd_num1 = (Math.random() * 1000) | 0;
     const rnd_num2 = (Math.random() * 1000) | 0;

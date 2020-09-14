@@ -5,6 +5,6 @@ package-lock.json
 js/
 coverage/
 data.json
-bench.js
+bench.ts
 mod.ts
 tsconfig.json

@@ -1,18 +1,16 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-console */
-/* eslint-disable no-loop-func */
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable node/no-unpublished-require */
-const fs = require("fs");
-const leven = require("leven");
 const Benchmark = require("benchmark");
-const fastLevenshtein = require("fast-levenshtein").get;
-const jslevenshtein = require("js-levenshtein");
-const levenshteinEditDistance = require("levenshtein-edit-distance");
-const { distance } = require("./dist");
+import { distance } from "./dist";
+import { get as fastLevenshtein } from "fast-levenshtein";
+const fs = require("fs");
+import jslevenshtein from "js-levenshtein";
+import leven from "leven";
+import levenshteinEditDistance from "levenshtein-edit-distance";
 
 const suite = new Benchmark.Suite();
 
-function randomstring(length) {
+const randomstring = (length) => {
   let result = "";
   const characters =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -21,16 +19,16 @@ function randomstring(length) {
     result += characters.charAt(Math.floor(Math.random() * charactersLength));
   }
   return result;
-}
+};
 
-function randomstringArr(stringSize, arraySize) {
+const randomstringArr = (stringSize, arraySize) => {
   let i = 0;
   const arr = [];
   for (i = 0; i < arraySize; i++) {
     arr.push(randomstring(stringSize));
   }
   return arr;
-}
+};
 
 const arrSize = 1000;
 if (!fs.existsSync("data.json")) {
@@ -49,10 +47,9 @@ if (!fs.existsSync("data.json")) {
   fs.writeFileSync("data.json", JSON.stringify(data));
 }
 
-const data = JSON.parse(fs.readFileSync("data.json"));
+const data = JSON.parse(fs.readFileSync("data.json", "utf8"));
 
 // BENCHMARKS
-let b = 0;
 for (let i = 0; i < 9; i++) {
   const datapick = data[i];
 
@@ -60,28 +57,28 @@ for (let i = 0; i < 9; i++) {
     suite
       .add(`${i} - js-levenshtein`, () => {
         for (let j = 0; j < arrSize - 1; j += 2) {
-          b += jslevenshtein(datapick[j], datapick[j + 1]);
+          jslevenshtein(datapick[j], datapick[j + 1]);
         }
       })
       .add(`${i} - leven`, () => {
         for (let j = 0; j < arrSize - 1; j += 2) {
-          b += leven(datapick[j], datapick[j + 1]);
+          leven(datapick[j], datapick[j + 1]);
         }
       })
       .add(`${i} - fast-levenshtein`, () => {
         for (let j = 0; j < arrSize - 1; j += 2) {
-          b += fastLevenshtein(datapick[j], datapick[j + 1]);
+          fastLevenshtein(datapick[j], datapick[j + 1]);
         }
       })
       .add(`${i} - levenshtein-edit-distance`, () => {
         for (let j = 0; j < arrSize - 1; j += 2) {
-          b += levenshteinEditDistance(datapick[j], datapick[j + 1]);
+          levenshteinEditDistance(datapick[j], datapick[j + 1]);
         }
       });
   }
   suite.add(`${i} - fastest-levenshtein`, () => {
     for (let j = 0; j < arrSize - 1; j += 2) {
-      b += distance(datapick[j], datapick[j + 1]);
+      distance(datapick[j], datapick[j + 1]);
     }
   });
 }
@@ -98,7 +95,6 @@ suite
   })
   .on("complete", () => {
     console.log(results);
-    console.log(b);
   })
   // run async
   .run({ async: true });
