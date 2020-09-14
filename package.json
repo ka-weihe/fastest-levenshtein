@@ -36,7 +36,7 @@
   "scripts": {
     "build": "rm -rf dist && tsc && for i in dist/mod.*; do mv $i \"${i/mod/index}\"; done",
     "prepare": "npm run build",
-    "test": "npm run build && jest",
+    "test": "npm run build && tsc test.ts && jest test.js",
     "test:coverage": "npm run build && jest --coverage",
     "test:coveralls": "npm run build && jest --coverage --coverageReporters=text-lcov | coveralls"
   },

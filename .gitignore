@@ -4,3 +4,4 @@ package-lock.json
 data.json
 dist
 coverage
+test.js
