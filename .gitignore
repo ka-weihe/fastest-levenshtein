@@ -5,3 +5,4 @@ data.json
 dist
 coverage
 test.js
+bench.js

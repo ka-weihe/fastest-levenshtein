@@ -4,9 +4,9 @@ const Benchmark = require("benchmark");
 import { distance } from "./dist";
 import { get as fastLevenshtein } from "fast-levenshtein";
 const fs = require("fs");
-import jslevenshtein from "js-levenshtein";
-import leven from "leven";
-import levenshteinEditDistance from "levenshtein-edit-distance";
+const jslevenshtein = require("js-levenshtein");
+const leven = require("leven");
+const levenshteinEditDistance = require("levenshtein-edit-distance");
 
 const suite = new Benchmark.Suite();
 
