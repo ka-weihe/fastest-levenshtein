@@ -1,5 +1,5 @@
 # fastest-levenshtein :rocket: 
-> Fastest JS implemenation of [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance).<br>
+> Fastest JS/TS implemenation of [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance).<br>
 > Measure the difference between two strings.
 
 [![Build Status](https://travis-ci.org/ka-weihe/node-levenshtein.svg?branch=master)](https://travis-ci.org/ka-weihe/node-levenshtein)
