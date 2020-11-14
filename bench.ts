@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-console */
 const Benchmark = require("benchmark");
-import { distance } from "./dist";
+import { distance } from "./mod.js";
 import { get as fastLevenshtein } from "fast-levenshtein";
 const fs = require("fs");
 const jslevenshtein = require("js-levenshtein");

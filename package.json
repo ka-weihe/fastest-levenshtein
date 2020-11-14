@@ -2,8 +2,8 @@
   "name": "fastest-levenshtein",
   "version": "1.0.12",
   "description": "Fastest Levenshtein distance implementation in JS.",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "mod.js",
+  "types": "mod.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ka-weihe/fastest-levenshtein.git"
@@ -34,7 +34,7 @@
   },
   "homepage": "https://github.com/ka-weihe/fastest-levenshtein#README",
   "scripts": {
-    "build": "rm -rf dist && tsc && for i in dist/mod.*; do mv $i \"${i/mod/index}\"; done",
+    "build": "tsc mod.ts --declaration",
     "prepare": "npm run build",
     "bench": "npm run build && tsc bench.ts && node bench.js",
     "test": "npm run build && tsc test.ts && jest test.js",

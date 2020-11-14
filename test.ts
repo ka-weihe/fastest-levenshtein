@@ -1,4 +1,4 @@
-import { closest, distance } from "./dist";
+import { closest, distance } from "./mod.js";
 
 const levenshtein = (a, b) => {
   if (a.length === 0) {
