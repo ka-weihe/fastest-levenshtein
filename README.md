@@ -5,6 +5,7 @@
 [![Build Status](https://travis-ci.org/ka-weihe/node-levenshtein.svg?branch=master)](https://travis-ci.org/ka-weihe/node-levenshtein)
 [![Coverage Status](https://coveralls.io/repos/github/ka-weihe/node-levenshtein/badge.svg?branch=master)](https://coveralls.io/github/ka-weihe/node-levenshtein?branch=master)
 [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/ka-weihe/fastest-levenshtein.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/ka-weihe/fastest-levenshtein/context:javascript)
+![npm](https://img.shields.io/npm/dm/fastest-levenshtein)
 ```bash
 $ npm i fastest-levenshtein
 ```
