@@ -1,4 +1,4 @@
-import { closest, distance } from "./mod.js";
+import { closest, closestIndex, distance } from "./mod.js";
 
 const levenshtein = (a, b) => {
   if (a.length === 0) {
@@ -63,5 +63,11 @@ test("test compare", () => {
 test("test find", () => {
   const actual = closest("fast", ["slow", "faster", "fastest"]);
   const expected = "faster";
+  expect(actual).toBe(expected);
+});
+
+test("test find index", () => {
+  const actual = closestIndex("fastest", ["slow", "faster", "fastest"]);
+  const expected = 2;
   expect(actual).toBe(expected);
 });

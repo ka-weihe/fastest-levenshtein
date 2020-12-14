@@ -127,6 +127,12 @@ const distance = (a: string, b: string): number => {
 };
 
 const closest = (str: string, arr: string[]): string => {
+  let min_index = closestIndex(str, arr);
+
+  return arr[min_index];
+};
+
+const closestIndex = (str: string, arr: string[]): number => {
   let min_distance = Infinity;
   let min_index = 0;
   for (let i = 0; i < arr.length; i++) {
@@ -136,7 +142,7 @@ const closest = (str: string, arr: string[]): string => {
       min_index = i;
     }
   }
-  return arr[min_index];
+  return min_index;
 };
 
-export { closest, distance };
+export { closest, closestIndex, distance };
