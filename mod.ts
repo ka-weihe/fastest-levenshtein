@@ -140,7 +140,7 @@ const closestIndex = (str: string, arr: string[]): number => {
 };
 
 const closest = (str: string, arr: string[]): string => {
-  let min_index = closestIndex(str, arr);
+  const min_index = closestIndex(str, arr);
 
   return arr[min_index];
 };
