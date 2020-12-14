@@ -126,12 +126,6 @@ const distance = (a: string, b: string): number => {
   return myers_x(a, b);
 };
 
-const closest = (str: string, arr: string[]): string => {
-  let min_index = closestIndex(str, arr);
-
-  return arr[min_index];
-};
-
 const closestIndex = (str: string, arr: string[]): number => {
   let min_distance = Infinity;
   let min_index = 0;
@@ -143,6 +137,12 @@ const closestIndex = (str: string, arr: string[]): number => {
     }
   }
   return min_index;
+};
+
+const closest = (str: string, arr: string[]): string => {
+  let min_index = closestIndex(str, arr);
+
+  return arr[min_index];
 };
 
 export { closest, closestIndex, distance };
