@@ -1,4 +1,4 @@
-# fastest-levenshtein :rocket: 
+# fastest-levenshtein :rocket:
 > Fastest JS/TS implemenation of [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance).<br>
 > Measure the difference between two strings.
 
@@ -15,11 +15,11 @@ $ npm i fastest-levenshtein
 ```javascript
 const {distance, closest} = require('fastest-levenshtein')
 
-// Print levenshtein-distance between 'fast' and 'faster' 
+// Print levenshtein-distance between 'fast' and 'faster'
 console.log(distance('fast', 'faster'))
 //=> 2
 
-// Print string from array with lowest edit-distance to 'fast'
+// Print string from array with lowest edit-distance to 'fast' (3rd argument (number) can be a distance limit, default Infinity)
 console.log(closest('fast', ['slow', 'faster', 'fastest']))
 //=> 'faster'
 ```
@@ -28,7 +28,7 @@ console.log(closest('fast', ['slow', 'faster', 'fastest']))
 ```javascript
 import {distance, closest} from 'https://deno.land/x/fastest_levenshtein/mod.ts'
 
-// Print levenshtein-distance between 'fast' and 'faster' 
+// Print levenshtein-distance between 'fast' and 'faster'
 console.log(distance('fast', 'faster'))
 //=> 2
 
@@ -38,7 +38,7 @@ console.log(closest('fast', ['slow', 'faster', 'fastest']))
 ```
 
 ## Benchmark
-I generated 500 pairs of strings with length N. I measured the ops/sec each library achieves to process all the given pairs. Higher is better. 
+I generated 500 pairs of strings with length N. I measured the ops/sec each library achieves to process all the given pairs. Higher is better.
 
 | Test Target               | N=4   | N=8   | N=16  | N=32 | N=64  | N=128 | N=256 | N=512 | N=1024 |
 |---------------------------|-------|-------|-------|------|-------|-------|-------|-------|--------|
