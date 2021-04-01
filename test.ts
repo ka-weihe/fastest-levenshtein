@@ -68,8 +68,7 @@ test("test find", () => {
 
 test("test find with a max distance no match", () => {
   const actual = closest("fast", ["This image shows the relative performance", "faster than the speed of light", "fastest to crash without an error"], 10);
-  const expected = undefined;
-  expect(actual).toBe(expected);
+  expect(actual).toBeUndefined();
 });
 
 test("test find with a max distance", () => {
