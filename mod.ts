@@ -113,7 +113,9 @@ const myers_x = (b: string, a: string) => {
 
 const distance = (a: string, b: string): number => {
   if (a.length < b.length) {
-    [b, a] = [a, b];
+    const tmp = b;
+    b = a;
+    a = tmp;
   }
   if (b.length === 0) {
     return a.length;
