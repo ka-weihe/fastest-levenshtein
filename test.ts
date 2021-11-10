@@ -65,3 +65,14 @@ test("test find", () => {
   const expected = "faster";
   expect(actual).toBe(expected);
 });
+
+test("test find with objects", () => {
+  const data = [
+    { id: 1, content: "slow" },
+    { id: 2, content: "faster" },
+    { id: 3, content: "fastest" },
+  ];
+  const actual = closest("fast", data, ({ content }) => content);
+  const expected = data.find(({ content }) => content === "faster");
+  expect(actual).toStrictEqual(expected);
+});
