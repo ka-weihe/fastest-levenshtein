@@ -4,6 +4,7 @@
   "description": "Fastest Levenshtein distance implementation in JS.",
   "main": "mod.js",
   "types": "mod.d.ts",
+  "module": "./esm/mod.esm.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ka-weihe/fastest-levenshtein.git"
