@@ -55,17 +55,17 @@ const myers_x = (b: string, a: string) => {
     }
     for (let i = 0; i < n; i++) {
       const eq = peq[a.charCodeAt(i)];
-      const pb = (phc[(i / 32) | 0] >>> i % 32) & 1;
-      const mb = (mhc[(i / 32) | 0] >>> i % 32) & 1;
+      const pb = (phc[(i / 32) | 0] >>> i) & 1;
+      const mb = (mhc[(i / 32) | 0] >>> i) & 1;
       const xv = eq | mv;
       const xh = ((((eq | mb) & pv) + pv) ^ pv) | eq | mb;
       let ph = mv | ~(xh | pv);
       let mh = pv & xh;
       if ((ph >>> 31) ^ pb) {
-        phc[(i / 32) | 0] ^= 1 << i % 32;
+        phc[(i / 32) | 0] ^= 1 << i;
       }
       if ((mh >>> 31) ^ mb) {
-        mhc[(i / 32) | 0] ^= 1 << i % 32;
+        mhc[(i / 32) | 0] ^= 1 << i;
       }
       ph = (ph << 1) | pb;
       mh = (mh << 1) | mb;
@@ -86,19 +86,19 @@ const myers_x = (b: string, a: string) => {
   let score = m;
   for (let i = 0; i < n; i++) {
     const eq = peq[a.charCodeAt(i)];
-    const pb = (phc[(i / 32) | 0] >>> i % 32) & 1;
-    const mb = (mhc[(i / 32) | 0] >>> i % 32) & 1;
+    const pb = (phc[(i / 32) | 0] >>> i) & 1;
+    const mb = (mhc[(i / 32) | 0] >>> i) & 1;
     const xv = eq | mv;
     const xh = ((((eq | mb) & pv) + pv) ^ pv) | eq | mb;
     let ph = mv | ~(xh | pv);
     let mh = pv & xh;
-    score += (ph >>> ((m % 32) - 1)) & 1;
-    score -= (mh >>> ((m % 32) - 1)) & 1;
+    score += (ph >>> (m - 1)) & 1;
+    score -= (mh >>> (m - 1)) & 1;
     if ((ph >>> 31) ^ pb) {
-      phc[(i / 32) | 0] ^= 1 << i % 32;
+      phc[(i / 32) | 0] ^= 1 << i;
     }
     if ((mh >>> 31) ^ mb) {
-      mhc[(i / 32) | 0] ^= 1 << i % 32;
+      mhc[(i / 32) | 0] ^= 1 << i;
     }
     ph = (ph << 1) | pb;
     mh = (mh << 1) | mb;
