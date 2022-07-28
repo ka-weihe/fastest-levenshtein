@@ -36,7 +36,8 @@
   "homepage": "https://github.com/ka-weihe/fastest-levenshtein#README",
   "scripts": {
     "build": "tsc mod.ts --declaration",
-    "prepare": "npm run build",
+    "build:esm": "tsc --declaration -p tsconfig.esm.json",
+    "prepare": "npm run build && npm run build:esm",
     "bench": "npm run build && tsc bench.ts && node bench.js",
     "test": "npm run build && tsc test.ts && jest test.js",
     "test:coverage": "npm run build && jest --coverage",
