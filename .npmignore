@@ -8,3 +8,4 @@ data.json
 bench.ts
 mod.ts
 tsconfig.json
+tsconfig.esm.json
