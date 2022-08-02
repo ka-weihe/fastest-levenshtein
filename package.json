@@ -1,6 +1,6 @@
 {
   "name": "fastest-levenshtein",
-  "version": "1.0.12",
+  "version": "1.0.15",
   "description": "Fastest Levenshtein distance implementation in JS.",
   "main": "mod.js",
   "types": "mod.d.ts",
