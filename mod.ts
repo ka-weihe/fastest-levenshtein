@@ -1,5 +1,5 @@
 const peq = new Uint32Array(0x10000);
-const myers_32 = (a: string, b: string) => {
+const myers_32 = (a: string, b: string): number => {
   const n = a.length;
   const m = b.length;
   const lst = 1 << (n - 1);
@@ -33,7 +33,7 @@ const myers_32 = (a: string, b: string) => {
   return sc;
 };
 
-const myers_x = (b: string, a: string) => {
+const myers_x = (b: string, a: string): number => {
   const n = a.length;
   const m = b.length;
   const mhc = [];
