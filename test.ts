@@ -65,3 +65,15 @@ test("test find", () => {
   const expected = "faster";
   expect(actual).toBe(expected);
 });
+
+test("test find with limit (positive)", () => {
+  const actual = closest("ab", ["abc", "def", "ghi"], 1);
+  const expected = "abc";
+  expect(actual).toBe(expected);
+});
+
+test("test find with limit (negative)", () => {
+  const actual = closest("abba", ["abc", "def", "ghi"], 1);
+  const expected = undefined;
+  expect(actual).toBe(expected);
+});
