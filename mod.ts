@@ -140,18 +140,12 @@ const closest = (str: string, arr: readonly string[]): string => {
 };
 
 const closestWithThreshold = (str: string, arr: readonly string[], threshold: number): string | undefined => {
-  let closestStr: string | undefined = undefined;
-  let min_distance = Infinity;
+  const closestStrings = arr
+    .map(item => ({ str: item, dist: distance(str, item) }))
+    .filter(item => item.dist <= threshold)
+    .sort((a, b) => a.dist - b.dist);
 
-  for (const item of arr) {
-    const dist = distance(str, item);
-    if (dist < min_distance && dist <= threshold) {
-      min_distance = dist;
-      closestStr = item;
-    }
-  }
-
-  return closestStr;
+  return closestStrings.length > 0 ? closestStrings[0].str : undefined;
 };
 
 export { closest, closestWithThreshold, distance };
