@@ -1,4 +1,4 @@
-const { closest, distance } = require("./mod.js");
+const { closest, closestWithThreshold, distance } = require("./mod.js");
 
 const levenshtein = (a, b) => {
   if (a.length === 0) {
@@ -62,6 +62,12 @@ test("test compare", () => {
 
 test("test find", () => {
   const actual = closest("fast", ["slow", "faster", "fastest"]);
+  const expected = "faster";
+  expect(actual).toBe(expected);
+});
+
+test("test find with threshold", () => {
+  const actual = closestWithThreshold("fast", ["slow", "faster", "fastest"], 2);
   const expected = "faster";
   expect(actual).toBe(expected);
 });
