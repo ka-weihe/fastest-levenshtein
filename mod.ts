@@ -139,4 +139,19 @@ const closest = (str: string, arr: readonly string[]): string => {
   return arr[min_index];
 };
 
-export { closest, distance };
+const closestWithThreshold = (str: string, arr: readonly string[], threshold: number): string | undefined => {
+  let closestStr: string | undefined = undefined;
+  let min_distance = Infinity;
+
+  for (const item of arr) {
+    const dist = distance(str, item);
+    if (dist < min_distance && dist <= threshold) {
+      min_distance = dist;
+      closestStr = item;
+    }
+  }
+
+  return closestStr;
+};
+
+export { closest, closestWithThreshold, distance };
