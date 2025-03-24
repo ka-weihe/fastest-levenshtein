@@ -10,7 +10,7 @@ const levenshteinEditDistance = require("levenshtein-edit-distance");
 
 const suite = new Benchmark.Suite();
 
-const randomstring = (length) => {
+const randomstring = (length: number) => {
   let result = "";
   const characters =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -21,9 +21,9 @@ const randomstring = (length) => {
   return result;
 };
 
-const randomstringArr = (stringSize, arraySize) => {
+const randomstringArr = (stringSize: number, arraySize: number) => {
   let i = 0;
-  const arr = [];
+  const arr: string[] = [];
   for (i = 0; i < arraySize; i++) {
     arr.push(randomstring(stringSize));
   }

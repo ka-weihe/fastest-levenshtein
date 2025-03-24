@@ -1,4 +1,4 @@
-const { closest, distance } = require("./mod.js");
+const { closest, closestN, distance } = require("./mod.js");
 
 const levenshtein = (a, b) => {
   if (a.length === 0) {
@@ -14,7 +14,7 @@ const levenshtein = (a, b) => {
     b = tmp;
   }
 
-  const row = [];
+  const row: number[] = [];
   for (let i = 0; i <= a.length; i++) {
     row[i] = i;
   }
@@ -60,8 +60,27 @@ test("test compare", () => {
   }
 });
 
-test("test find", () => {
+test("test closest", () => {
   const actual = closest("fast", ["slow", "faster", "fastest"]);
   const expected = "faster";
   expect(actual).toBe(expected);
+});
+
+test("test closest1", () => {
+  const actual = closestN("fast", ["slow", "faster", "fastest"], 1);
+  const expected = ["faster"];
+  expect(actual).toEqual(expected);
+});
+
+test("test closest2", () => {
+  const actual = closestN("fast", ["slow", "faster", "fastest"], 2);
+  const expected = ["faster", "fastest"];
+  expect(actual).toEqual(expected);
+});
+
+test("test closestN", () => {
+  const arr = ["slow", "faster", "fastest", "fanta", "feast", "fest"]
+  const actual = closestN("fast", arr, 4);
+  const expected = ["feast", "fest", "faster", "fanta"];
+  expect(actual).toEqual(expected);
 });

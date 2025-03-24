@@ -127,16 +127,33 @@ const distance = (a: string, b: string): number => {
 };
 
 const closest = (str: string, arr: readonly string[]): string => {
-  let min_distance = Infinity;
-  let min_index = 0;
+  // slightly faster than closestN(str, arr, 1)[0] ?
+  let minDistance = Infinity;
+  let minIndex = 0;
   for (let i = 0; i < arr.length; i++) {
     const dist = distance(str, arr[i]);
-    if (dist < min_distance) {
-      min_distance = dist;
-      min_index = i;
+    if (dist < minDistance) {
+      minDistance = dist;
+      minIndex = i;
     }
   }
-  return arr[min_index];
+  return arr[minIndex];
 };
 
-export { closest, distance };
+const closestN = (str: string, arr: readonly string[], n: number): Array<string | null> => {
+  const distances = Array(n).fill(Infinity);
+  const values = Array(n).fill(null);
+  for (let i = 0; i < arr.length; i++) {
+    let val = arr[i]
+    let dist = distance(str, val)
+    for (let j = 0; j < n; j++) {
+      if (dist < distances[j]) {
+        [dist, distances[j]] = [distances[j], dist];
+        [val, values[j]] = [values[j], val]
+      }
+    }
+  }
+  return values;
+};
+
+export { closest, closestN, distance };
