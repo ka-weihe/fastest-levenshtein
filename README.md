@@ -35,6 +35,30 @@ console.log(closest('fast', ['slow', 'faster', 'fastest']))
 //=> 'faster'
 ```
 
+## Unicode behavior
+
+This implementation operates on JavaScript string length and UTF-16 code units.
+
+Internally, the distance functions use `String.length` and `charCodeAt()`.
+Supplementary Unicode code points are represented in UTF-16 as surrogate pairs,
+so one Unicode code point can occupy two sequence positions in the calculated
+Levenshtein distance.
+
+As a result, the distance returned by this package is a UTF-16 code-unit
+distance. It should not be interpreted automatically as Unicode code-point
+distance or extended grapheme-cluster distance.
+
+This distinction is especially relevant for supplementary characters, emoji,
+combining sequences and other text where one user-perceived character does not
+necessarily correspond to one UTF-16 code unit.
+
+Applications that require code-point or grapheme-cluster distance should use a
+comparison sequence whose units are defined explicitly before applying the
+Levenshtein algorithm.
+
+For additional background on runtime string representations and edit-distance
+implementations, see [Levenshtein implementations and Unicode sequence units](https://www.levenshtein.net/levenshtein-implementations).
+
 ## Benchmark
 I generated 500 pairs of strings with length N. I measured the ops/sec each library achieves to process all the given pairs. Higher is better. 
 
